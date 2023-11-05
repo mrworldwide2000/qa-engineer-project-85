@@ -1,0 +1,2 @@
+### Hexlet tests and linter status:
+[![Actions Status](https://github.com/mrworldwide2000/qa-engineer-project-85/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/mrworldwide2000/qa-engineer-project-85/actions)
