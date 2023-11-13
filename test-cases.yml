@@ -1,0 +1,15 @@
+---
+- summary: Проверка создания учетной записи с несуществующим email
+  requirement: Для создания учетной записи необходим никнейм, email, пароль, подтверждение пароля
+  prerequisites: Открыта страница создания учетной записи
+  test-data: Nickname = Domination
+             Email = never354345345existed@email.ru.ss.ia
+             Password = 123123
+             Password confirmation = 123123
+  steps:
+    - Вводим ник
+    - Вводим email
+    - Вводим пароль
+    - Вводим подтверждение пароля
+    - Нажимаем кнопку «Submit»
+  expected-result: Учетная запись не будет создана из-за несуществущего email
