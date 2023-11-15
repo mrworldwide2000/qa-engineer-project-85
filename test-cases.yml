@@ -2,7 +2,7 @@
 - summary: Проверка создания учетной записи с несуществующим email
   requirement: Для создания учетной записи необходим никнейм, email, пароль, подтверждение пароля
   prerequisites: Открыта страница создания учетной записи
-  test-data: Nickname = Domination
+  test-data: Nickname = ANdrey11
              Email = never354345345existed@email.ru.ss.ia
              Password = 123123
              Password confirmation = 123123
@@ -13,3 +13,54 @@
     - Вводим подтверждение пароля
     - Нажимаем кнопку «Submit»
   expected-result: Учетная запись не будет создана из-за несуществущего email
+
+- summary: Проверка входа в учетную запись через discord
+  requirement: Существует возможность входа в учетную запись через через аккаунт discord
+  prerequisites: 
+    - Открыта страница входа в учетную запись
+    - В текущем браузере выполнена авторизация на сайте discord
+  test-data: Отсутствует
+  steps:
+    - Нажимаем "Sign in with Discord"
+  expected-result: Мы успешно войдем в учетную запись с учетными данными discord
+
+- summary: Проверка создания учетной записи с существующим email
+  requirement: Для создания учетной записи необходим никнейм, email, пароль, подтверждение пароля
+  prerequisites: Открыта страница создания учетной записи
+  test-data: Nickname = ANdrey11
+             Email = volozhaninov.andrej@yandex.ru
+             Password = 123123
+             Password confirmation = 123123
+  steps:
+    - Вводим ник
+    - Вводим email
+    - Вводим пароль
+    - Вводим подтверждение пароля
+    - Нажимаем кнопку «Submit»
+  expected-result: Учетная запись будет создана без ошибок
+
+- summary: Проверка создания учетной записи с никнеймом меньше 3 символов
+  requirement: Допустимая длина никнейма от 3 до 16 символов
+  prerequisites: Открыта страница создания учетной записи
+  test-data: Nickname = Do
+             Email = volozhaninov.andrej@yandex.ru
+             Password = 123123
+             Password confirmation = 123123
+  steps:
+    - Вводим ник
+    - Вводим email
+    - Вводим пароль
+    - Вводим подтверждение пароля
+    - Нажимаем кнопку «Submit»
+  expected-result: Учетная запись не будет создана из-за ошибки
+
+- summary: Проверка входа в существующую учетную запись
+  requirement: Для входа в учетную запись необходим email и пароль
+  prerequisites: Открыта страница входа в учетную запись
+  test-data: Email = never354345345existed@email.ru.ss.ia
+             Password = 123123
+  steps:
+    - Вводим email
+    - Вводим пароль
+    - Нажимаем кнопку «Submit»
+  expected-result: Успешный вход в учетную запись
