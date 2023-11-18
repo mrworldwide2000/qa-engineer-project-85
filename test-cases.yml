@@ -79,7 +79,7 @@
     - Нажимаем кнопку «Submit»
   expected-result: Учетная запись будет создана без ошибок
 
-- summary: Проверка создания учетной записи с никнеймом меньше 3 символов
+- summary: Проверка создания учетной записи с никнеймом короче 3 символов
   requirement: Допустимая длина никнейма от 3 до 16 символов
   prerequisites: Открыта страница создания учетной записи
   test-data: Nickname = Do
@@ -92,7 +92,52 @@
     - Вводим пароль
     - Вводим подтверждение пароля
     - Нажимаем кнопку «Submit»
-  expected-result: Учетная запись не будет создана из-за ошибки
+  expected-result: Учетная запись не будет создана из-за ошибки в поле никнейма
+
+- summary: Проверка создания учетной записи с никнеймом из 3 символов
+  requirement: Допустимая длина никнейма от 3 до 16 символов
+  prerequisites: Открыта страница создания учетной записи
+  test-data: Nickname = Dov
+             Email = volozhaninov.andrej@yandex.ru
+             Password = 123123
+             Password confirmation = 123123
+  steps:
+    - Вводим ник
+    - Вводим email
+    - Вводим пароль
+    - Вводим подтверждение пароля
+    - Нажимаем кнопку «Submit»
+  expected-result: Учетная запись будет успешно создана
+
+- summary: Проверка создания учетной записи с никнеймом из 16 символов
+  requirement: Допустимая длина никнейма от 3 до 16 символов
+  prerequisites: Открыта страница создания учетной записи
+  test-data: Nickname = Dddddddddddddddd
+             Email = volozhaninov.andrej@yandex.ru
+             Password = 123123
+             Password confirmation = 123123
+  steps:
+    - Вводим ник
+    - Вводим email
+    - Вводим пароль
+    - Вводим подтверждение пароля
+    - Нажимаем кнопку «Submit»
+  expected-result: Учетная запись будет успешно создана
+
+- summary: Проверка создания учетной записи с никнеймом больше 16 символов
+  requirement: Допустимая длина никнейма от 3 до 16 символов
+  prerequisites: Открыта страница создания учетной записи
+  test-data: Nickname = Ddddddddddddddddd
+             Email = volozhaninov.andrej@yandex.ru
+             Password = 123123
+             Password confirmation = 123123
+  steps:
+    - Вводим ник
+    - Вводим email
+    - Вводим пароль
+    - Вводим подтверждение пароля
+    - Нажимаем кнопку «Submit»
+  expected-result: Учетная запись не будет создана из-за ошибки в поле никнейма
 
 - summary: Проверка входа в существующую учетную запись
   requirement: Для входа в учетную запись необходим email и пароль
@@ -104,3 +149,47 @@
     - Вводим пароль
     - Нажимаем кнопку «Submit»
   expected-result: Успешный вход в учетную запись
+
+- summary: Проверка совместимости с браузером Microsoft Edge
+  requirement: Сайт должен быть протестирован на совместимость с последними версиями браузеров
+  environment:
+    - Microsoft Edge Версия 119.0.2151.72 (64-разрядная версия)
+  prerequisites: Отсутствует
+  test-data: Email = never354345345existed@email.ru.ss.ia
+             Password = 123123
+  steps:
+    - Авторизоваться в учетной записи
+    - Перейти во вкладку Tournaments
+    - Перейти во вкладку Completed Games
+    - Создать игру с ботом
+    - Перейти на страницу My Profile
+  expected-result: Сайт будет работать корректно в Microsoft Edge
+
+- summary: Проверка совместимости с браузером Firefox Browser
+  requirement: Сайт должен быть протестирован на совместимость с последними версиями браузеров
+  environment:
+    - Firefox Browser 119.0.1 (64-разрядный)
+  prerequisites: Отсутствует
+  test-data: Email = never354345345existed@email.ru.ss.ia
+             Password = 123123
+  steps:
+    - Авторизоваться в учетной записи
+    - Перейти во вкладку Tournaments
+    - Перейти во вкладку Completed Games
+    - Создать игру с ботом
+    - Перейти на страницу My Profile
+  expected-result: Сайт будет работать корректно в Firefox Browser
+
+- summary: Проверка скорости загрузки страницы
+  requirement: Сайт должен быть разработан с учетом удобства использования и оптимизирован для скорости работы
+  environment:
+    - Microsoft Edge Версия 119.0.2151.72 (64-разрядная версия)
+    - Скорость приема интернета на момент проверки 1 мегабайт в секунду
+  prerequisites: Отсутствует
+  test-data: Email = never354345345existed@email.ru.ss.ia
+             Password = 123123
+  steps:
+    - Авторизоваться в учетной записи
+    - Открыть Devtools на домашней странице сайта
+    - Запустить проверку скорости загрузки домашней страницы
+  expected-result: Сайт полностью загрузится за 1-10 секунд
